@@ -41,7 +41,7 @@ public class TestAerolinea {
 		String ciudadDondeEscala = "San Benito";
 		Vuelo vuelo = new Vuelo(nroVuelo, fecha, ciudadDondeEscala, persona, avion);
 
-		vuelo.agregarPersona(persona);
+		//vuelo.agregarPasajero(persona);
 		vuelo.agregarAvion(avion);
 
 		Integer valorEsperado = 1;

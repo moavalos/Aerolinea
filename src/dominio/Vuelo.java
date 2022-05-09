@@ -6,20 +6,19 @@ import java.util.Collection;
 
 public class Vuelo {
 
-	
 	private Integer nroVuelo;
 	private LocalDate fecha;
 	private String ciudadDondeEscala;
 	private Avion tipoDeAvion;
 	private Persona personalAsignado;
-	
+
 	private ArrayList<Persona> personas = new ArrayList<>();
 	private ArrayList<Avion> asientos = new ArrayList<>();
 	private ArrayList<Avion> vuelo = new ArrayList<>();
 	private Integer cantidadDeAsientosLibres;
 
-	public Vuelo(Integer nroVuelo, LocalDate fecha, String ciudadDondeEscala, 
-			Persona personalAsignado, Avion tipoDeAvion) {
+	public Vuelo(Integer nroVuelo, LocalDate fecha, String ciudadDondeEscala, Persona personalAsignado,
+			Avion tipoDeAvion) {
 		this.nroVuelo = nroVuelo;
 		this.fecha = fecha;
 		this.ciudadDondeEscala = ciudadDondeEscala;
@@ -27,16 +26,24 @@ public class Vuelo {
 		this.tipoDeAvion = tipoDeAvion;
 	}
 
-	public void agregarPersona(Persona persona) {
-		if(asientos.size() < cantidadDeAsientosLibres) {
-			this.asientos.addAll((Collection<? extends Avion>) persona);
+	public Boolean agregarPasajero(Persona pasajero, Integer asientoSeleccionado) {
+		Boolean sePudoAgregar = false;
+		if (pasajero instanceof Pasajero) {
+			if (obtenerCantidadDePersonas() < cantidadDeAsientosLibres) {
+				personas.add(asientoSeleccionado, pasajero);
+				sePudoAgregar = true;
+			}
 		}
-		
+		return sePudoAgregar;
+//		if(asientos.size() < cantidadDeAsientosLibres) {
+//			this.asientos.addAll((Collection<? extends Avion>) persona);
+//		}
+
 	}
 
 	public void agregarAvion(Avion avion) {
 		this.vuelo.add(avion);
-		
+
 	}
 
 	public Integer obtenerCantidadDePersonas() {
@@ -58,7 +65,6 @@ public class Vuelo {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-
 
 	public String getCiudadDondeEscala() {
 		return ciudadDondeEscala;
