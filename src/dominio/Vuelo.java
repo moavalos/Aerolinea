@@ -19,6 +19,7 @@ public class Vuelo {
 	private ArrayList<Avion> vuelo = new ArrayList<>();
 
 	private Integer cantidadDeAsientosLibres;
+	private Integer id;
 
 	public Vuelo(Integer nroVuelo, LocalDateTime fecha, String origen, String destino, Persona personalAsignado,
 			Avion tipoDeAvion) {
@@ -28,6 +29,11 @@ public class Vuelo {
 		this.destino = destino;
 		this.personalAsignado = personalAsignado;
 		this.tipoDeAvion = tipoDeAvion;
+		this.id++;
+	}
+
+	public Integer getCantDePersonal() {
+		return personas.size();
 	}
 
 	public Integer obtenerCantidadDePersonas() {
@@ -49,8 +55,21 @@ public class Vuelo {
 
 	}
 
+	public Boolean asientoDisponible(Persona pasajero, Integer asiento) {
+		if (this.tipoDeAvion.ocuparAsiento(asiento, pasajero)) {
+			return true;
+		}
+		return false;
+
+	}
+
 	public void agregarAvion(Avion avion) {
 		this.vuelo.add(avion);
+
+	}
+
+	public void agregarPesonalAlVuelo(Persona personal) {
+		this.personas.add(personal);
 
 	}
 
@@ -66,6 +85,14 @@ public class Vuelo {
 
 	public String getDestino() {
 		return destino;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setDestino(String destino) {

@@ -2,10 +2,10 @@ package dominio;
 
 public class Pasajero extends Persona {
 
-	private String pasaporte; // el pasaporte consta de 3 letras y numeros
+	private Boolean pasaporte; // el pasaporte consta de 3 letras y numeros
 	private Integer vuelosComprados;
 
-	public Pasajero(String nombre, String apellido, Integer dni, String pasaporte, Integer vuelosComprados) {
+	public Pasajero(String nombre, String apellido, Integer dni, Boolean pasaporte, Integer vuelosComprados) {
 		super(nombre, apellido, dni);
 		this.pasaporte = pasaporte;
 		this.vuelosComprados = vuelosComprados;
@@ -14,11 +14,11 @@ public class Pasajero extends Persona {
 
 	
 	// SETTERS Y GETTERS
-	public String getPasaporte() {
+	public Boolean getPasaporte() {
 		return pasaporte;
 	}
 
-	public void setPasaporte(String pasaporte) {
+	public void setPasaporte(Boolean pasaporte) {
 		this.pasaporte = pasaporte;
 	}
 
