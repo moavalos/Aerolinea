@@ -1,36 +1,44 @@
 package dominio;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class Vuelo {
 
 	private Integer nroVuelo;
-	private LocalDate fecha;
-	private String ciudadDondeEscala;
+	private LocalDateTime fecha;
+	private String origen;
+	private String destino;
 	private Avion tipoDeAvion;
 	private Persona personalAsignado;
 
 	private ArrayList<Persona> personas = new ArrayList<>();
 	private ArrayList<Avion> asientos = new ArrayList<>();
 	private ArrayList<Avion> vuelo = new ArrayList<>();
+
 	private Integer cantidadDeAsientosLibres;
 
-	public Vuelo(Integer nroVuelo, LocalDate fecha, String ciudadDondeEscala, Persona personalAsignado,
+	public Vuelo(Integer nroVuelo, LocalDateTime fecha, String origen, String destino, Persona personalAsignado,
 			Avion tipoDeAvion) {
 		this.nroVuelo = nroVuelo;
 		this.fecha = fecha;
-		this.ciudadDondeEscala = ciudadDondeEscala;
+		this.origen = origen;
+		this.destino = destino;
 		this.personalAsignado = personalAsignado;
 		this.tipoDeAvion = tipoDeAvion;
 	}
 
-	public Boolean agregarPasajero(Persona pasajero, Integer asientoSeleccionado) {
+	public Integer obtenerCantidadDePersonas() {
+		return this.personas.size();
+	}
+
+	public Boolean agregarPasajero(Persona pasajero) {
 		Boolean sePudoAgregar = false;
 		if (pasajero instanceof Pasajero) {
 			if (obtenerCantidadDePersonas() < cantidadDeAsientosLibres) {
-				personas.add(asientoSeleccionado, pasajero);
+				personas.add(pasajero);
 				sePudoAgregar = true;
 			}
 		}
@@ -46,8 +54,22 @@ public class Vuelo {
 
 	}
 
-	public Integer obtenerCantidadDePersonas() {
-		return this.personas.size();
+	// SETTERS Y GETTERS
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
 	}
 
 	public Integer getNroVuelo() {
@@ -58,20 +80,12 @@ public class Vuelo {
 		this.nroVuelo = nroVuelo;
 	}
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
-	}
-
-	public String getCiudadDondeEscala() {
-		return ciudadDondeEscala;
-	}
-
-	public void setCiudadDondeEscala(String ciudadDondeEscala) {
-		this.ciudadDondeEscala = ciudadDondeEscala;
 	}
 
 	public Avion getTipoDeAvion() {

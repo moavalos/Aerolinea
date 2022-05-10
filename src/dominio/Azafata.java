@@ -6,4 +6,5 @@ public class Azafata extends Persona {
 		super(nombre, apellido, dni);
 
 	}
+	
 }

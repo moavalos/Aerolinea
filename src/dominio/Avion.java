@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Avion {
 
-
 	private String nombre;
 	private String modelo;
 	private String fabricante;
@@ -29,6 +28,7 @@ public class Avion {
 		}
 
 	}
+
 
 	public Integer obtenerCantidadDePersonas() {
 		return this.pasajeros.size();
